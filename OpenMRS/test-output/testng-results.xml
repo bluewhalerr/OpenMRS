@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-01-07T16:02:12 IST" name="Suite" finished-at="2024-01-07T16:02:48 IST" duration-ms="36013">
+    <groups>
+    </groups>
+    <test started-at="2024-01-07T16:02:12 IST" name="Chrome Test" finished-at="2024-01-07T16:02:48 IST" duration-ms="36013">
+      <class name="com.OpenMRS.TestRunner">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:com.OpenMRS.TestRunner@7b98f307]" started-at="2024-01-07T16:02:12 IST" name="setUp" finished-at="2024-01-07T16:02:14 IST" duration-ms="2120" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="tc01()[pri:0, instance:com.OpenMRS.TestRunner@7b98f307]" started-at="2024-01-07T16:02:14 IST" name="tc01" description="tc01-Login" finished-at="2024-01-07T16:02:18 IST" duration-ms="3655" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc01 -->
+        <test-method signature="tc02()[pri:0, instance:com.OpenMRS.TestRunner@7b98f307]" started-at="2024-01-07T16:02:18 IST" name="tc02" finished-at="2024-01-07T16:02:48 IST" duration-ms="30065" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc02 -->
+        <test-method signature="tc03()[pri:0, instance:com.OpenMRS.TestRunner@7b98f307]" started-at="2024-01-07T16:02:48 IST" name="tc03" finished-at="2024-01-07T16:02:48 IST" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc03 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.OpenMRS.TestRunner@7b98f307]" started-at="2024-01-07T16:02:48 IST" name="tearDown" finished-at="2024-01-07T16:02:48 IST" duration-ms="132" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.OpenMRS.TestRunner -->
+    </test> <!-- Chrome Test -->
+  </suite> <!-- Suite -->
+</testng-results>
