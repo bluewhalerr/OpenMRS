@@ -1,9 +1,20 @@
 package com.OpenMRS;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.List;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,9 +29,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -28,7 +36,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseM {
 
 	public static WebDriver driver;
-
+	
+	 public static void setDriver(WebDriver webDriver) {
+	        driver = webDriver;
+	    }
 	// Method Creation to launch the browser-Using External Drivers
 	public WebDriver browserLaunch(String browser) throws Exception {
 		try {
@@ -58,15 +69,15 @@ public class BaseM {
 	}
 
 	// Method Creation to launch the browser-Using WebDriverManager
-	public WebDriver browserSetup(String browser) throws Exception {
+	public static WebDriver browserSetup(String browser) throws Exception {
 		try {
 			if (browser.equalsIgnoreCase("chrome")) {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--disable-notifications");
-				//options.addArguments("enable-automation");
+				// options.addArguments("enable-automation");
 				options.addArguments("--incognito");
 				// options.addArguments("--start-maximized");
-				//options.addArguments("--disable-extensions");
+				// options.addArguments("--disable-extensions");
 				driver = WebDriverManager.chromedriver().capabilities(options).create();
 				System.out.println("Browser Started:" + browser);
 
@@ -96,7 +107,7 @@ public class BaseM {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		return driver;
 	}
-	
+
 	public static WebDriver launchBrowser(String browser) throws Throwable {
 
 		try {
@@ -106,7 +117,7 @@ public class BaseM {
 				options.addArguments("incognito");
 				driver = new ChromeDriver(options);
 
-			} else if (browser.equalsIgnoreCase("gecko")) {
+			} else if (browser.equalsIgnoreCase("firefox")) {
 				WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
 
@@ -121,7 +132,7 @@ public class BaseM {
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		return driver;
 
 	}
@@ -155,11 +166,7 @@ public class BaseM {
 		element.click();
 
 	}
-	// Method Creation to click on webElement
-		public static void eClick(List<WebElement> element) {
-			((WebElement) element).click();
-		}
-		
+
 	// Method Creation to getText of webElement
 	public static void printValue(WebElement element) {
 		// waituntilElementVisibility(30, element);
@@ -200,27 +207,27 @@ public class BaseM {
 	}
 
 	// Method Creation to select element form Dropdown
-	public static void dropDown(WebElement element, String value, String options) throws Throwable {
-		Select s = new Select(element);
+	public static void dropDown(WebElement element, String Option, String value) {
+		Select sc = new Select(element);
 		try {
-			if (options.equalsIgnoreCase("by index")) {
-				// string integer convert
-				int p = Integer.parseInt(value);
-				s.selectByIndex(p);
-
-			} else if (options.equalsIgnoreCase("by value")) {
-				s.selectByValue(value);
-			} else if (options.equalsIgnoreCase("by visibletext")) {
-				s.selectByVisibleText(value);
+			if (Option.equalsIgnoreCase("byIndex")) {
+				int parseInt = Integer.parseInt(value);// Value is by default 'String' in the webpage so it is converted
+														// into the 'Integer'
+				sc.selectByIndex(parseInt);
+			} else if (Option.equalsIgnoreCase("byValue")) {
+				sc.selectByValue(value);
+			} else if (Option.equalsIgnoreCase("byVisibleText")) {
+				sc.selectByVisibleText(value);
 			} else {
 				throw new Exception();
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("invalid select");
-
 		}
+		WebElement selectedOption = sc.getFirstSelectedOption();
+		String selectedText = selectedOption.getText();
+		System.out.println("Selected Option: " + selectedText);
 	}
 
 	// Method creation to get the Title of the WebPage
@@ -237,7 +244,8 @@ public class BaseM {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		return driver;
 	}
-	public static WebDriver assertWebText(String expectedText,WebElement element) {
+
+	public static WebDriver assertWebText(String expectedText, WebElement element) {
 		try {
 			String actualText = element.getText();
 			SoftAssert sf = new SoftAssert();
@@ -252,6 +260,38 @@ public class BaseM {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		return driver;
 	}
+
+	public void robotFileUpload(String filepath) throws AWTException {
+		Robot r = new Robot();
+		StringSelection str = new StringSelection(filepath);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
+		
+		r.keyPress(KeyEvent.VK_CONTROL);
+		r.keyPress(KeyEvent.VK_V);
+		
+		r.keyRelease(KeyEvent.VK_CONTROL);
+		r.keyRelease(KeyEvent.VK_V);
+		
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+	}
 	
-	//System.out.println("Current URL: " + driver.getCurrentUrl());
+	//Method creation to take screenshot
+	public static WebDriver takeScreenshot(String fileName) throws IOException {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		File destination = new File("./Screenshots/"+ fileName + ".png");
+		FileUtils.copyFile(source, destination);
+		return driver;
+	}	
+	// System.out.println("Current URL: " + driver.getCurrentUrl());
 }
+
+
+
+
+
+
+
+
+

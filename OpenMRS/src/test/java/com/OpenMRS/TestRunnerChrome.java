@@ -1,5 +1,8 @@
 package com.OpenMRS;
 
+import java.awt.AWTException;
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -7,40 +10,57 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class TestRunner extends BaseM {
+public class TestRunnerChrome extends BaseM {
 
 	public static WebDriver driver;
 	public static OpenMRS openMRSTest;
 
 	@BeforeClass(alwaysRun = true)
 	@Parameters("browser")
-	public void setUp(String browser ) throws Throwable {
-//		String browser = ConfigurationReader.getInstance().getProperty("browser");
-//		driver = BaseM.launchBrowser(browser);		
-		driver = launchBrowser(browser);
-		//driver = getUrl("https://qa-refapp.openmrs.org/openmrs/login.htm");
+	public void setUp(String browser) throws Throwable {
+		driver = BaseM.browserSetup(browser);
 	}
-	
-//	@BeforeMethod
-//	public void currentPage() {
-//		
-//	}
-	@Test(description = "tc01-Login")
-	public void tc01() {
+
+	@Test
+	public void tc01() throws Throwable {
 
 		openMRSTest = new OpenMRS(driver);
 		openMRSTest.loginAsAUser();
-		assertPageTitle("Login");
 	}
 
 	@Test
-	public void tc02() throws Throwable {
+	public void  tc02() throws Throwable {
 		openMRSTest.registerPatint();
-		assertPageTitle("Login");
 	}
+
 	@Test
 	public void tc03() {
 		openMRSTest.patientDashboardPage();
+	}
+
+	@Test
+	public void tc04() throws AWTException, InterruptedException, IOException {
+		openMRSTest.fileAttachment();
+	}
+
+	@Test
+	public void tc05() throws InterruptedException {
+		openMRSTest.endVisit();
+	}
+
+	@Test
+	public void  tc06() {
+		openMRSTest.captureVitals();
+	}
+
+	@Test
+	public void  tc07() throws InterruptedException {
+		openMRSTest.mergePatientVisits();
+	}
+	
+	@Test
+	public void  tc08() throws Throwable {
+		openMRSTest.deletePatient();
 	}
 
 	@AfterClass(alwaysRun = true)

@@ -5,11 +5,9 @@
     <classes>
       <class name="com.OpenMRS.TestRunner">
         <methods>
-          <include name="tc03"/>
-          <include name="tc01"/>
+          <include name="tc08"/>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="tc02"/>
         </methods>
       </class> <!-- com.OpenMRS.TestRunner -->
     </classes>

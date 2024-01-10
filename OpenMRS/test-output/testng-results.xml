@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-01-07T16:02:12 IST" name="Suite" finished-at="2024-01-07T16:02:48 IST" duration-ms="36013">
+  <suite started-at="2024-01-11T02:19:55 IST" name="Suite" finished-at="2024-01-11T02:21:27 IST" duration-ms="91527">
     <groups>
     </groups>
-    <test started-at="2024-01-07T16:02:12 IST" name="Chrome Test" finished-at="2024-01-07T16:02:48 IST" duration-ms="36013">
-      <class name="com.OpenMRS.TestRunner">
-        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:com.OpenMRS.TestRunner@7b98f307]" started-at="2024-01-07T16:02:12 IST" name="setUp" finished-at="2024-01-07T16:02:14 IST" duration-ms="2120" status="PASS">
+    <test started-at="2024-01-11T02:19:55 IST" name="Chrome Test" finished-at="2024-01-11T02:21:27 IST" duration-ms="91527">
+      <class name="com.OpenMRS.TestRunnerChrome">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:com.OpenMRS.TestRunnerChrome@397fbdb]" started-at="2024-01-11T02:19:55 IST" name="setUp" finished-at="2024-01-11T02:20:10 IST" duration-ms="15228" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,23 +18,43 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="tc01()[pri:0, instance:com.OpenMRS.TestRunner@7b98f307]" started-at="2024-01-07T16:02:14 IST" name="tc01" description="tc01-Login" finished-at="2024-01-07T16:02:18 IST" duration-ms="3655" status="PASS">
+        <test-method signature="tc01()[pri:0, instance:com.OpenMRS.TestRunnerChrome@397fbdb]" started-at="2024-01-11T02:20:10 IST" name="tc01" finished-at="2024-01-11T02:20:16 IST" duration-ms="5597" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tc01 -->
-        <test-method signature="tc02()[pri:0, instance:com.OpenMRS.TestRunner@7b98f307]" started-at="2024-01-07T16:02:18 IST" name="tc02" finished-at="2024-01-07T16:02:48 IST" duration-ms="30065" status="PASS">
+        <test-method signature="tc02()[pri:0, instance:com.OpenMRS.TestRunnerChrome@397fbdb]" started-at="2024-01-11T02:20:16 IST" name="tc02" finished-at="2024-01-11T02:20:22 IST" duration-ms="5692" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tc02 -->
-        <test-method signature="tc03()[pri:0, instance:com.OpenMRS.TestRunner@7b98f307]" started-at="2024-01-07T16:02:48 IST" name="tc03" finished-at="2024-01-07T16:02:48 IST" duration-ms="5" status="PASS">
+        <test-method signature="tc03()[pri:0, instance:com.OpenMRS.TestRunnerChrome@397fbdb]" started-at="2024-01-11T02:20:22 IST" name="tc03" finished-at="2024-01-11T02:20:27 IST" duration-ms="5641" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tc03 -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.OpenMRS.TestRunner@7b98f307]" started-at="2024-01-07T16:02:48 IST" name="tearDown" finished-at="2024-01-07T16:02:48 IST" duration-ms="132" status="PASS">
+        <test-method signature="tc04()[pri:0, instance:com.OpenMRS.TestRunnerChrome@397fbdb]" started-at="2024-01-11T02:20:27 IST" name="tc04" finished-at="2024-01-11T02:20:50 IST" duration-ms="23032" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc04 -->
+        <test-method signature="tc05()[pri:0, instance:com.OpenMRS.TestRunnerChrome@397fbdb]" started-at="2024-01-11T02:20:50 IST" name="tc05" finished-at="2024-01-11T02:20:53 IST" duration-ms="2295" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc05 -->
+        <test-method signature="tc06()[pri:0, instance:com.OpenMRS.TestRunnerChrome@397fbdb]" started-at="2024-01-11T02:20:53 IST" name="tc06" finished-at="2024-01-11T02:21:11 IST" duration-ms="17907" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc06 -->
+        <test-method signature="tc07()[pri:0, instance:com.OpenMRS.TestRunnerChrome@397fbdb]" started-at="2024-01-11T02:21:11 IST" name="tc07" finished-at="2024-01-11T02:21:26 IST" duration-ms="15299" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc07 -->
+        <test-method signature="tc08()[pri:0, instance:com.OpenMRS.TestRunnerChrome@397fbdb]" started-at="2024-01-11T02:21:26 IST" name="tc08" finished-at="2024-01-11T02:21:26 IST" duration-ms="275" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc08 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.OpenMRS.TestRunnerChrome@397fbdb]" started-at="2024-01-11T02:21:26 IST" name="tearDown" finished-at="2024-01-11T02:21:27 IST" duration-ms="506" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.OpenMRS.TestRunner -->
+      </class> <!-- com.OpenMRS.TestRunnerChrome -->
     </test> <!-- Chrome Test -->
   </suite> <!-- Suite -->
 </testng-results>
