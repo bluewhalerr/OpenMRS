@@ -247,7 +247,7 @@ public class OpenMRS extends BaseM {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	}
 
-	public void fileAttachment() throws AWTException, InterruptedException, IOException {
+	public void fileAttachment(Process exec) throws AWTException, InterruptedException, IOException {
 		System.out.println("Verify whether user can able to Attach the file");
 		logger.log(Level.INFO, "Verify whether user can able to Attach the file");
 			eclick(attach);

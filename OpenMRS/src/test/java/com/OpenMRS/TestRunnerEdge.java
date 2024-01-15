@@ -38,7 +38,8 @@ public class TestRunnerEdge extends BaseM {
 
 	@Test
 	public void tc04() throws AWTException, InterruptedException, IOException {
-		openMRSTest.fileAttachment();
+		Process exec = Runtime.getRuntime().exec("src\\test\\resources\\autoIT\\Upload1.exe");
+		openMRSTest.fileAttachment(exec);
 	}
 
 	@Test

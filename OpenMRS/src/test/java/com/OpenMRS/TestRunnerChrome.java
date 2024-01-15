@@ -40,7 +40,7 @@ public class TestRunnerChrome extends BaseM {
 
 	@Test
 	public void tc04() throws AWTException, InterruptedException, IOException {
-		openMRSTest.fileAttachment();
+		openMRSTest.fileAttachment(null);
 	}
 
 	@Test
